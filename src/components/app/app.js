@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import TableContainer from '../table-container';
 
-import './app.css';
+import './app.css'
 
 const App = () => {
   return (
-    <div className='App'>
+    <div>
+      <h1>React Table</h1>
       <TableContainer />
     </div>
   );

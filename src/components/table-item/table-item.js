@@ -1,11 +1,19 @@
 import React from 'react';
 
-import './table-item.css';
+import { TableRow, TableDef } from './elements';
 
 const TableItem = (props) => {
-  return <div>
-   
-  </div>;
+  return (
+    <TableRow>
+      <TableDef label='label'>{props.id}</TableDef>
+      <TableDef label='label'>{props.firstName}</TableDef>
+      <TableDef label='label'>{props.lastName}</TableDef>
+      <TableDef label='label'>{props.email}</TableDef>
+      <TableDef label='label'>{props.phone}</TableDef>
+      <TableDef label='label'>{props.address}</TableDef>
+      <TableDef label='label'>{props.description}</TableDef>
+    </TableRow>
+  );
 };
 
 // {
@@ -22,6 +30,5 @@ const TableItem = (props) => {
 //   },
 //   description: "sapien sit hendrerit augue ipsum massa lacus et placerat mattis vestibulum ac orci magna elementum aliquam lacus vestibulum convallis et aenean suspendisse sit hendrerit neque tempor lectus etiam augue sollicitudin non tempor"
 //   },
-
 
 export default TableItem;
