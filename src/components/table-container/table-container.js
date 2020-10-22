@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchDataSuccess, fetching, setCurrentPage } from '../../actions/actions';
+import {
+  fetchDataSuccess,
+  setCurrentPage,
+  sortTable,
+} from '../../actions/actions';
 
 import TableHeader from '../tabel-header';
 import TableBody from '../table-body';
@@ -15,7 +19,6 @@ const TableContainer = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetching());
     dispatch(fetchDataSuccess());
   }, [dispatch]);
 
@@ -29,18 +32,23 @@ const TableContainer = (props) => {
   const paginate = (num) => {
     dispatch(setCurrentPage(num));
   };
-  // currentPage: 1,
-  // maxPerPage: 10,
+
+  const sortTableBy = (key) => {
+    dispatch(sortTable(key));
+  };
+
   return (
-    <Table>
-      <TableHeader />
-      <TableBody data={currentList} isLoading={isLoading} />
+    <>
+      <Table>
+        <TableHeader data={peopleInfo} sortTableBy={sortTableBy} />
+        <TableBody data={currentList} isLoading={isLoading} />
+      </Table>
       <Pagination
         maxPerPage={maxPerPage}
         totalItems={totalItems}
         paginate={paginate}
       />
-    </Table>
+    </>
   );
 };
 

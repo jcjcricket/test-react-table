@@ -2,17 +2,17 @@ import React from 'react';
 
 import { THead, TH, TR } from './elements';
 
-const TableHeader = () => {
+const TableHeader = ({ sortTableBy }) => {
   return (
     <THead>
-      <TR>
-        <TH>#ID</TH>
-        <TH>First Name</TH>
-        <TH>Last Name</TH>
-        <TH>E-Mail</TH>
-        <TH>Phone</TH>
-        <TH>Address</TH>
-        <TH>Description</TH>
+      <TR onClick={(e) => sortTableBy(e.target.dataset.key)}>
+        <TH data-key='id'>ID</TH>
+        <TH data-key='firstName'>FIRST NAME</TH>
+        <TH data-key='lastName'>LAST NAME</TH>
+        <TH>EMAIL</TH>
+        <TH>PHONE</TH>
+        <TH>ADDRESS</TH>
+        <TH>DESCRITION</TH>
       </TR>
     </THead>
   );

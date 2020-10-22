@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const THead = styled.thead`
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     border: none;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -18,8 +18,11 @@ export const TR = styled.tr`
   border: 1px solid #52575d;
   padding: 0.35em;
   color: #f6f4e6;
+  &:hover {
+    cursor: pointer;
+  }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     border-bottom: 3px solid #41444b;
     display: block;
     margin-bottom: 0.625em;
@@ -27,7 +30,7 @@ export const TR = styled.tr`
 `;
 
 export const TH = styled.th`
-  border: 1px solid #41444b;
+  border: 1px solid #f6f4e6;
   padding: 0.625em;
   text-align: center;
   vertical-align: middle;

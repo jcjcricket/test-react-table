@@ -4,7 +4,11 @@ export const TR = styled.tr`
   background-color: #f8f8f8;
   border: 1px solid #52575d;
   padding: 0.35em;
-  @media screen and (max-width: 600px) {
+  &:hover {
+    background-color: #c3c6c9;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 800px) {
     border-bottom: 3px solid #ddd;
     display: block;
     margin-bottom: 0.625em;
@@ -16,11 +20,8 @@ export const TD = styled.td`
   padding: 0.625em;
   margin: 0;
   text-align: center;
-  &:hover {
-    background-color: #c3c6c9;
-  }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     border: 1px solid #52575d;
     display: block;
     font-size: 0.8em;

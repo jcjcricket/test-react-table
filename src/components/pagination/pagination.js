@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { PageList, PageListItem } from './elements';
+
 const Pagination = ({ maxPerPage, totalItems, paginate }) => {
   const pageNums = [];
 
@@ -8,19 +10,17 @@ const Pagination = ({ maxPerPage, totalItems, paginate }) => {
   }
 
   return (
-    <div>
-      <ul>
-        {pageNums.map((num) => {
-          return (
-            <li key={num}>
-              <a href='!#' onClick={() => paginate(num)}>
-                {num}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <PageList>
+      {pageNums.map((num) => {
+        return (
+          <PageListItem key={num}>
+            <button onClick={() => paginate(num)}>
+              {num}
+            </button>
+          </PageListItem>
+        );
+      })}
+    </PageList>
   );
 };
 

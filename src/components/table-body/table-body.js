@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TR, TD, TDDescDiv, TBody } from './elements';
+import { TR, TD, TBody } from './elements';
 
 const TableBody = ({ data, isLoading }) => {
   const _data = data.map((i) => {
@@ -14,10 +14,10 @@ const TableBody = ({ data, isLoading }) => {
         <TD>
           {
             <>
-              <p><i>Street Address:</i> {i.adress.streetAddress}</p>
-              <p><i>City:</i> {i.adress.city}</p>
-              <p><i>State:</i> {i.adress.state}</p>
-              <p><i>Zip-Code:</i> {i.adress.zip}</p>
+              <span><b>Street Address:</b> {i.adress.streetAddress}  </span>
+              <span><b>City:</b> {i.adress.city}  </span>
+              <span><b>State:</b> {i.adress.state}  </span>
+              <span><b>Zip-Code:</b> {i.adress.zip}  </span>
             </>
           }
         </TD>
