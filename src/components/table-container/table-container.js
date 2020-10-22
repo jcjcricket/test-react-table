@@ -1,45 +1,47 @@
-import React, { Component } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { connect } from 'react-redux';
+import { fetchDataSuccess, fetching, setCurrentPage } from '../../actions/actions';
 
-import TableView from '../table-view';
-import fetchDataAsync from '../../actions/actions';
+import TableHeader from '../tabel-header';
+import TableBody from '../table-body';
+import Pagination from '../pagination';
 
-class TableContainer extends Component {
-  constructor(props) {
-    super(props);
+import { Table } from './elements';
 
-    this.state = {
-      data: [],
-      isLoading: false,
-      hasError: false,
-      currentPage: 1,
-      maxPerPage: 10,
-    };
-  }
+const TableContainer = (props) => {
+  const state = useSelector((state) => state.data);
 
-  componentDidMount() {
-    this.props.fetchDataAsync();
-  }
+  const dispatch = useDispatch();
 
-  render() {
-    const { data } = this.props.data;
+  useEffect(() => {
+    dispatch(fetching());
+    dispatch(fetchDataSuccess());
+  }, [dispatch]);
 
-    return (
-      <div>
-        <TableView data={data} />
-      </div>
-    );
-  }
-}
+  const { peopleInfo, isLoading, hasError, currentPage, maxPerPage } = state;
 
-const mapStateToProps = (state) => {
-  return {
-    data: state.data,
-    isLoading: state.data,
-    isError: state.data,
+  const indexOfListEnd = currentPage * maxPerPage;
+  const indexOfListBeggin = indexOfListEnd - maxPerPage;
+  const currentList = peopleInfo.slice(indexOfListBeggin, indexOfListEnd);
+  const totalItems = peopleInfo.length;
+
+  const paginate = (num) => {
+    dispatch(setCurrentPage(num));
   };
+  // currentPage: 1,
+  // maxPerPage: 10,
+  return (
+    <Table>
+      <TableHeader />
+      <TableBody data={currentList} isLoading={isLoading} />
+      <Pagination
+        maxPerPage={maxPerPage}
+        totalItems={totalItems}
+        paginate={paginate}
+      />
+    </Table>
+  );
 };
 
-export default connect(mapStateToProps, { fetchDataAsync })(TableContainer);
+export default TableContainer;

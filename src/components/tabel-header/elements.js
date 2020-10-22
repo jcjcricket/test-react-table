@@ -1,0 +1,40 @@
+import styled from 'styled-components';
+
+export const THead = styled.thead`
+  @media screen and (max-width: 600px) {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+`;
+
+export const TR = styled.tr`
+  background-color: #41444b;
+  border: 1px solid #52575d;
+  padding: 0.35em;
+  color: #f6f4e6;
+
+  @media screen and (max-width: 600px) {
+    border-bottom: 3px solid #41444b;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+`;
+
+export const TH = styled.th`
+  border: 1px solid #41444b;
+  padding: 0.625em;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  &:hover {
+    background-color: #52575d;
+  }
+`;
