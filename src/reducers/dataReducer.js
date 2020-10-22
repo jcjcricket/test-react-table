@@ -1,5 +1,4 @@
 function sortBy(data, key, direction) {
-  console.log(data, key);
 
   switch (direction) {
     case true:

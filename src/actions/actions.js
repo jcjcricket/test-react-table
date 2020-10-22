@@ -30,6 +30,6 @@ export const setCurrentPage = (num) => {
 export const sortTable = (key) => {
   return {
     type: 'TABLE_SORT_TOGGLE',
-    payload: key
+    payload: key,
   };
 };

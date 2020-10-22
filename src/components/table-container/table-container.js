@@ -47,6 +47,7 @@ const TableContainer = (props) => {
         maxPerPage={maxPerPage}
         totalItems={totalItems}
         paginate={paginate}
+        
       />
     </>
   );

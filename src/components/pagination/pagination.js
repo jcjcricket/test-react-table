@@ -13,7 +13,7 @@ const Pagination = ({ maxPerPage, totalItems, paginate }) => {
     <PageList>
       {pageNums.map((num) => {
         return (
-          <PageListItem key={num}>
+          <PageListItem key={num} >
             <button onClick={() => paginate(num)}>
               {num}
             </button>

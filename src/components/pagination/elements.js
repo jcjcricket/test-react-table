@@ -14,12 +14,15 @@ export const PageListItem = styled.li`
     background-color: #41444b;
     color: #f6f4e6;
     text-decoration: none;
-    &:hover {
+    &:hover,
+    &:focus {
       cursor: pointer;
       border: 1px solid #f6f4e6;
+      background-color: #f6f4e6;
+      color: #41444b;
     }
     &:visited {
-        text-decoration: none;
-      }
+      text-decoration: none;
+    }
   }
 `;
