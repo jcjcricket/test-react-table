@@ -6,7 +6,7 @@ const initState = {
   isLoading: false,
   hasError: false,
   isSorted: false,
-
+  isFiltered: false,
   currentPage: 1,
   maxPerPage: 10,
   sortDirectionAsc: true,
@@ -32,6 +32,12 @@ const dataReducer = (state = initState, action) => {
         ...state,
         currentPage: action.payload,
       };
+    case 'FETCH_DATA_SUCCESS':
+      return {
+        ...state,
+        peopleInfo: action.payload,
+      };
+
     case 'TABLE_SORT_TOGGLE':
       return {
         ...state,
@@ -43,7 +49,6 @@ const dataReducer = (state = initState, action) => {
         sortDirectionAsc: !state.sortDirectionAsc,
       };
     case 'TABLE_FILTER_BY':
-      console.log(state.peopleInfo, action.payload);
       return {
         ...state,
         peopleInfo: filterBy(state.peopleInfo, action.payload),

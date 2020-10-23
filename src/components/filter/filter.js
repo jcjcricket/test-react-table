@@ -12,9 +12,7 @@ const Filter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (refContainer.current.value === '') {
     
-    }
     dispatch(filterTableBy(refContainer.current.value));
   };
 

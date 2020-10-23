@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  requestData,
   fetchDataSuccess,
   setCurrentPage,
   sortTable,
@@ -20,15 +19,18 @@ const TableContainer = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(requestData());
-    fetch(
-      'http://www.filltext.com/?rows=100&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&adress={addressObject}&description={lorem|32}'
-    )
-      .then((response) => response.json())
-      .then((data) => dispatch(fetchDataSuccess(data)));
+    dispatch(fetchDataSuccess());
   }, [dispatch]);
 
-  const { peopleInfo, isLoading, hasError, currentPage, maxPerPage } = state;
+  const {
+    peopleInfo,
+    isLoading,
+    hasError,
+    currentPage,
+    maxPerPage,
+    isSorted,
+    isFiltered,
+  } = state;
   const indexOfListEnd = currentPage * maxPerPage;
   const indexOfListBeggin = indexOfListEnd - maxPerPage;
   const currentList = peopleInfo.slice(indexOfListBeggin, indexOfListEnd);
