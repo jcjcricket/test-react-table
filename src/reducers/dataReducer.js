@@ -1,37 +1,12 @@
-function sortBy(data, key, direction) {
-
-  switch (direction) {
-    case true:
-      switch (key) {
-        case 'id':
-          return data.sort((a, b) => (a[key] > b[key]) ? 1 : -1);
-        case 'firstName':
-          return data.sort((a, b) => (a[key] > b[key]) ? 1 : -1);
-        case 'lastName':
-          return data.sort((a, b) => (a[key] > b[key]) ? 1 : -1);
-        default:
-          return data;
-      }
-    case false:
-      switch (key) {
-        case 'id':
-          return data.sort((a, b) => (a[key] < b[key]) ? 1 : -1);
-        case 'firstName':
-          return data.sort((a, b) => (a[key] < b[key]) ? 1 : -1);
-        case 'lastName':
-          return data.sort((a, b) => (a[key] < b[key]) ? 1 : -1);
-        default:
-          return data;
-      }
-    default:
-      return data;
-  }
-}
+import { sortBy } from '../utils/sorting';
+import { filterBy } from '../utils/filtering';
 
 const initState = {
   peopleInfo: [],
   isLoading: false,
   hasError: false,
+  isSorted: false,
+
   currentPage: 1,
   maxPerPage: 10,
   sortDirectionAsc: true,
@@ -40,8 +15,6 @@ const initState = {
 const dataReducer = (state = initState, action) => {
   switch (action.type) {
     case 'FETCH_DATA_SUCCESS':
-      console.log('FETCH_DATA_SUCCESS');
-
       return {
         ...state,
         peopleInfo: action.payload,
@@ -68,6 +41,12 @@ const dataReducer = (state = initState, action) => {
           state.sortDirectionAsc
         ),
         sortDirectionAsc: !state.sortDirectionAsc,
+      };
+    case 'TABLE_FILTER_BY':
+      console.log(state.peopleInfo, action.payload);
+      return {
+        ...state,
+        peopleInfo: filterBy(state.peopleInfo, action.payload),
       };
     default:
       return state;
