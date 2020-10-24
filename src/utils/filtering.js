@@ -1,4 +1,7 @@
 export const filterBy = (data, string) => {
+  if (string === '') {
+    return data
+  }
   const regexp = new RegExp(`${string}`, 'gm');
 
   return data.filter((i) => {

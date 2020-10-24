@@ -14,6 +14,7 @@ export const PageListItem = styled.li`
     background-color: #41444b;
     color: #f6f4e6;
     text-decoration: none;
+    font-size: 19px;
     &:hover,
     &:focus {
       cursor: pointer;

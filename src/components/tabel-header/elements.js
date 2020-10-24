@@ -40,4 +40,9 @@ export const TH = styled.th`
   &:hover {
     background-color: #52575d;
   }
+  > i {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: row;
+  }
 `;

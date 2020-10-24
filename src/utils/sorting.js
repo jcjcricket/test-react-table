@@ -1,6 +1,6 @@
 export function sortBy(data, key, direction) {
   switch (direction) {
-    case true:
+    case 'des':
       switch (key) {
         case 'id':
           return data.sort((a, b) => (a[key] > b[key] ? 1 : -1));
@@ -11,7 +11,7 @@ export function sortBy(data, key, direction) {
         default:
           return data;
       }
-    case false:
+    case 'asc':
       switch (key) {
         case 'id':
           return data.sort((a, b) => (a[key] < b[key] ? 1 : -1));

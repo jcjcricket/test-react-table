@@ -1,11 +1,12 @@
 import React from 'react';
 
+
 import { TR, TD, TBody } from './elements';
 
-const TableBody = ({ data, isLoading }) => {
+const TableBody = ({ data, infoClick }) => {
   const _data = data.map((i) => {
     return (
-      <TR key={i.id}>
+      <TR key={i.id} id={i.id} onClick={infoClick}>
         <TD>{i.id}</TD>
         <TD>{i.firstName}</TD>
         <TD>{i.lastName}</TD>
@@ -28,7 +29,9 @@ const TableBody = ({ data, isLoading }) => {
     );
   });
 
-  return <TBody>{ _data}</TBody>;
+  return <TBody>
+    {_data}
+  </TBody>;
 };
 
 export default TableBody;

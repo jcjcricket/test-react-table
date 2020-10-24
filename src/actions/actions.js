@@ -16,7 +16,15 @@ export const fetchDataSuccess = () => (dispatch) => {
         type: 'FETCH_DATA_SUCCESS',
         payload: data,
       })
-    );
+  )
+    .catch((err) => dispatch(requestError(err)));
+};
+
+export const requestError = (err) => {
+  return {
+    type: 'FETCH_DATA_FAILURE',
+    payload: err,
+  };
 };
 
 export const setCurrentPage = (num) => {
@@ -37,5 +45,12 @@ export const filterTableBy = (key) => {
   return {
     type: 'TABLE_FILTER_BY',
     payload: key,
+  };
+};
+
+export const setPersonId = (data) => {
+  return {
+    type: "SET_PERSON_ID",
+    payload: data
   };
 };

@@ -5,11 +5,10 @@ const initState = {
   peopleInfo: [],
   isLoading: false,
   hasError: false,
-  isSorted: false,
   isFiltered: false,
   currentPage: 1,
   maxPerPage: 10,
-  sortDirectionAsc: true,
+  sortDirection: 'asc',
 };
 
 const dataReducer = (state = initState, action) => {
@@ -35,7 +34,14 @@ const dataReducer = (state = initState, action) => {
     case 'FETCH_DATA_SUCCESS':
       return {
         ...state,
+        isLoading: false,
         peopleInfo: action.payload,
+      };
+    case 'FETCH_DATA_FAILURE':
+      return {
+        ...state,
+        isLoading: false,
+        hasError: action.payload,
       };
 
     case 'TABLE_SORT_TOGGLE':
@@ -44,9 +50,9 @@ const dataReducer = (state = initState, action) => {
         peopleInfo: sortBy(
           state.peopleInfo,
           action.payload,
-          state.sortDirectionAsc
+          state.sortDirection
         ),
-        sortDirectionAsc: !state.sortDirectionAsc,
+        sortDirection: state.sortDirection === 'asc' ? 'des' : 'asc',
       };
     case 'TABLE_FILTER_BY':
       return {

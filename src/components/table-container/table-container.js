@@ -5,12 +5,16 @@ import {
   fetchDataSuccess,
   setCurrentPage,
   sortTable,
+  setPersonId,
 } from '../../actions/actions';
 
 import Filter from '../filter/filter';
 import TableHeader from '../tabel-header';
 import TableBody from '../table-body';
 import Pagination from '../pagination';
+import PersonInfo from '../person-info';
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator'
 
 import { Table } from './elements';
 
@@ -36,25 +40,42 @@ const TableContainer = (props) => {
   const currentList = peopleInfo.slice(indexOfListBeggin, indexOfListEnd);
   const totalItems = peopleInfo.length;
 
-  const paginate = (num) => {
+  const handlePageClick = (num) => {
     dispatch(setCurrentPage(num));
   };
 
-  const sortTableBy = (key) => {
-    dispatch(sortTable(key));
+  
+  const infoClick = (e) => {
+    e.persist();
+    e.stopPropagation();
+    dispatch(setPersonId(e.currentTarget.id));
   };
+
+  if (hasError) {
+    return <ErrorIndicator />;
+  }
+
+  if (isLoading) {
+    return <Spinner/>
+  }
 
   return (
     <>
+      
       <Filter />
       <Table>
-        <TableHeader data={peopleInfo} sortTableBy={sortTableBy} />
-        <TableBody data={currentList} isLoading={isLoading} />
+        <TableHeader data={peopleInfo}/>
+        <TableBody
+          data={currentList}
+          isLoading={isLoading}
+          infoClick={infoClick}
+        />
       </Table>
+      <PersonInfo />
       <Pagination
         maxPerPage={maxPerPage}
         totalItems={totalItems}
-        paginate={paginate}
+        handlePageClick={handlePageClick}
       />
     </>
   );
