@@ -5,7 +5,6 @@ const initState = {
   peopleInfo: [],
   isLoading: false,
   hasError: false,
-  isFiltered: false,
   currentPage: 1,
   maxPerPage: 10,
   sortDirection: 'asc',

@@ -8,19 +8,19 @@ import { THead, TH, TR } from './elements';
 const TableHeader = () => {
   const dispatch = useDispatch();
   const sortDir = useSelector((state) => state.data.sortDirection);
-  console.log(sortDir)
-  const sortTableBy = (key) => {
+  const sortTableBy = (key, e) => {
+
     dispatch(sortTable(key));
   };
+  const sortUp = <i className='fa fa-sort-up'></i>;
+  const sortDown =  <i className='fa fa-sort-down'></i>
 
   return (
     <THead>
-      <TR onClick={(e) => sortTableBy(e.target.dataset.key)}>
-        <TH data-key='id'>ID{sortDir === 'asc' ? <i className='fa fa-sort-up'></i> : <i className='fa fa-sort-down'></i>}</TH>
-        <TH data-key='firstName'>
-          FIRST NAME {sortDir === 'asc' ? <i className='fa fa-sort-up'></i> : <i className='fa fa-sort-down'></i>}
-        </TH>
-        <TH data-key='lastName'>LAST NAME{sortDir === 'asc' ? <i className='fa fa-sort-up'></i> : <i className='fa fa-sort-down'></i>}</TH>
+      <TR onClickCapture={(e) => sortTableBy(e.target.id, e)}>
+        <TH id='id'>ID {sortDir === 'asc' ? sortUp : sortDown} </TH>
+        <TH id='firstName'> FIRST NAME {sortDir === 'asc' ? sortUp : sortDown} </TH>
+        <TH id='lastName'> LAST NAME{sortDir === 'asc' ? sortUp : sortDown} </TH>
         <TH>EMAIL</TH>
         <TH>PHONE</TH>
         <TH>ADDRESS</TH>

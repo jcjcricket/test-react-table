@@ -8,5 +8,9 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.2rem
+  font-size: 1.2rem;
+  > textarea {
+    width: 60%;
+    height: auto;
+  }
 `;

@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 
 export const FilterForm = styled.form`
-    > input {
-      width: 400px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom:1rem ;
+
+  > input {
+      width: 200px;
       padding: 12px 20px;
       margin: 8px 0;
       box-sizing: border-box;

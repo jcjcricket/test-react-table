@@ -12,8 +12,8 @@ export const PersonInfo = () => {
       <Info key={i.id}>
         <p>Выбран пользователь: <b>{i.firstName} {i.lastName}</b></p>
         <p>Описание:</p>
-        <textarea cols="30" rows="10">
-          {i.description}
+        <textarea defaultValue={i.description}>
+          
         </textarea>
         <p>Адрес проживания: <b>{i.adress.streetAddress}</b></p>
         <p>Город: <b>{i.adress.city}</b></p>

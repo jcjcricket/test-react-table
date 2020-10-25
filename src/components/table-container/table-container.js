@@ -18,7 +18,7 @@ import ErrorIndicator from '../error-indicator'
 
 import { Table } from './elements';
 
-const TableContainer = (props) => {
+const TableContainer = () => {
   const state = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
@@ -32,13 +32,17 @@ const TableContainer = (props) => {
     hasError,
     currentPage,
     maxPerPage,
-    isSorted,
-    isFiltered,
   } = state;
   const indexOfListEnd = currentPage * maxPerPage;
   const indexOfListBeggin = indexOfListEnd - maxPerPage;
-  const currentList = peopleInfo.slice(indexOfListBeggin, indexOfListEnd);
-  const totalItems = peopleInfo.length;
+
+  let currentList;
+  let totalItems;
+
+  currentList = peopleInfo.slice(indexOfListBeggin, indexOfListEnd);
+  totalItems = peopleInfo.length;
+
+  
 
   const handlePageClick = (num) => {
     dispatch(setCurrentPage(num));
@@ -64,7 +68,7 @@ const TableContainer = (props) => {
       
       <Filter />
       <Table>
-        <TableHeader data={peopleInfo}/>
+        <TableHeader />
         <TableBody
           data={currentList}
           isLoading={isLoading}

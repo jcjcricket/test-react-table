@@ -3,13 +3,8 @@ import styled from 'styled-components';
 export const THead = styled.thead`
   @media screen and (max-width: 800px) {
     border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
     overflow: hidden;
     padding: 0;
-    position: absolute;
-    width: 1px;
   }
 `;
 
@@ -26,10 +21,17 @@ export const TR = styled.tr`
     border-bottom: 3px solid #41444b;
     display: block;
     margin-bottom: 0.625em;
+
   }
 `;
 
 export const TH = styled.th`
+@media screen and (max-width: 800px) {
+    border: none;
+    overflow: hidden;
+    padding: 0 5px;
+   
+  }
   border: 1px solid #f6f4e6;
   padding: 0.625em;
   text-align: center;
@@ -37,12 +39,18 @@ export const TH = styled.th`
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+
   &:hover {
     background-color: #52575d;
   }
-  > i {
-    font-size: 1.4rem;
-    display: flex;
-    flex-direction: row;
+  > span {
+    display: block;
+    overflow:auto;
+    
+
+    > i {
+      font-size: 1.5rem;
+      float: right
+    }
   }
 `;
